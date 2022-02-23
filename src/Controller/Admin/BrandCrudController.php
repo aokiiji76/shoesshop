@@ -3,6 +3,9 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Brand;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class BrandCrudController extends AbstractCrudController
@@ -12,14 +15,24 @@ class BrandCrudController extends AbstractCrudController
         return Brand::class;
     }
 
-    /*
+    
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
+            TextField::new('name','Nom de la marque'),
+            ChoiceField::new('footerOrder','bas de page-accueil')->setChoices([
+                'Ne pas afficher' => '0',
+                '1ère Position' => '1',
+                '2eme Position' => '2',
+                '3eme Position' => '3',
+                '4eme Position' => '4',
+                '5eme Position' => '5',
+            ]),
+            DateTimeField::new('createdAt')->onlyOnIndex(),
+            DateTimeField::new('updatedAt')->onlyOnIndex(),
+            
+             
         ];
     }
-    */
+    
 }

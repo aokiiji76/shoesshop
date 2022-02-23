@@ -2,14 +2,16 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\User;
-use App\Entity\Category;
-use App\Entity\Product;
+use App\Entity\Brand;
 use App\Entity\Type;
+use App\Entity\User;
+use App\Entity\Product;
+use App\Entity\Category;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
+use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 
 class DashboardController extends AbstractDashboardController
@@ -51,6 +53,8 @@ class DashboardController extends AbstractDashboardController
             MenuItem::section('Produits'),
             MenuItem::linkToCrud('Categories', 'fa fa-book-open', Category::class),
             MenuItem::linkToCrud('Types', 'fa fa-comment', Type::class),
+            MenuItem::linkToCrud('Marques', 'fa fa-certificate', Brand::class),
+
             MenuItem::linkToCrud('Produits', 'fa fa-tags', Product::class),
 
 
