@@ -13,17 +13,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class MainController extends AbstractController
 {
     #[Route('/', name: 'accueil')]
-    public function accueil(
-        CategoryRepository $categoryRepository,
-        TypeRepository $typeRepository,
-        BrandRepository $brandRepository
-        ): Response
+    public function accueil(CategoryRepository $categoryRepository): Response
     { 
-       //dd($categories);
         return $this->render('pages/accueil.html.twig', [
-            'categories' => $categoryRepository->HomeOrderCategory(),
-            'types'=>$typeRepository->findAll(),
-            'brands'=>$brandRepository->findAll(),
+            'homeCategories' => $categoryRepository->HomeOrderCategory(),
         ]);
     }
 

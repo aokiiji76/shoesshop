@@ -31,6 +31,7 @@ class CategoryRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+
     
 
     /*

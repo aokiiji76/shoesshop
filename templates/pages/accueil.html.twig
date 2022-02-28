@@ -7,7 +7,7 @@
   <div class="container-fluid">
     <div class="row mx-0">
 
-      {% for category in categories %}
+      {% for category in homeCategories %}
       {% if category.homeOrder < 3  %}
       <div class="col-md-6">
         <div class="card border-0 text-white text-center"><img src=" {{category.picture}}  " alt="Card image"
@@ -26,7 +26,7 @@
       {# ----------------------------------- Categorie a partir de 3eme position ------------------------------- #}
       <div class="row mx-0">
         
-        {% for category in categories %}
+        {% for category in homeCategories %}
         {% if category.homeOrder >= 3  %}
         <div class="col-lg-4">
           <div class="card border-0 text-center text-white"><img src=" {{category.picture}}" alt="Card image"

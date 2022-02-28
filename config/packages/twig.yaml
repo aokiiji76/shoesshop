@@ -1,6 +1,13 @@
 twig:
     default_path: '%kernel.project_dir%/templates'
+    globals:
+        globalBrands: '@App\Repository\BrandRepository'
+        globalCategories: '@App\Repository\CategoryRepository'
+        globalTypes: '@App\Repository\TypeRepository'
+        
 
 when@test:
     twig:
-        strict_variables: true
+        strict_variables: true        
+
+

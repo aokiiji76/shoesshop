@@ -45,7 +45,7 @@
               Catégories
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            {% for category in categories %}
+            {% for category in globalCategories.homeOrderCategory() %}
               <li><a class="dropdown-item" href="#"> {{category.name}} </a></li>
             {% endfor %}
             </ul>
@@ -56,7 +56,7 @@
               Types de produit
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            {% for type in types %}
+            {% for type in globalTypes.findAll() %}
               <li><a class="dropdown-item" href="#"> {{type.name}} </a></li>
             {% endfor %}
             </ul>
@@ -67,7 +67,7 @@
               Marques
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            {% for brand in brands %}
+            {% for brand in globalBrands.findAll() %}
               <li><a class="dropdown-item" href="#"> {{brand.name}} </a></li>
             {% endfor %}
             </ul>  

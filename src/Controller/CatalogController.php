@@ -14,8 +14,8 @@ class CatalogController extends AbstractController
     {
     
         $category = $categoryRepository->find($categoryId); 
-        //$product = $productRepository->findByCategory($id);
-       //dd($category);
+       
+    //dd($category);
         return $this->render('pages/product/list.html.twig', [
             'category' => $category
             
