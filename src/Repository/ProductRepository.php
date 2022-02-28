@@ -20,13 +20,14 @@ class ProductRepository extends ServiceEntityRepository
     }
 
    
-    public function findByCategory($id)
+    public function availableProduct($id)
     {
 
         return $this->createQueryBuilder('p')
         ->addSelect('c') //to make Doctrine actually use the join
         ->leftJoin('p.category', 'c')
         ->where('c.id = :id')
+        ->andWhere('p.status = 1')
         ->setParameter('id', $id)
         ->getQuery()
         ->getResult();

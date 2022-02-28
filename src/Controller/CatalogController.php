@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\CategoryRepository;
+use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -10,14 +11,19 @@ use Symfony\Component\Routing\Annotation\Route;
 class CatalogController extends AbstractController
 {
     #[Route('/categorie/{categoryId}', name: 'catalogCategory')]
-    public function productByCategory(CategoryRepository $categoryRepository, $categoryId): Response
+    public function productByCategory(
+        CategoryRepository $categoryRepository,
+        ProductRepository $productRepository, 
+        $categoryId): Response
     {
     
         $category = $categoryRepository->find($categoryId); 
+        $products = $productRepository->availableProduct($categoryId);
        
-    //dd($category);
+    //dd($products);
         return $this->render('pages/product/list.html.twig', [
-            'category' => $category
+            'category' => $category,
+            'products'=> $products
             
         ]);
     }
