@@ -20,29 +20,41 @@ class ProductRepository extends ServiceEntityRepository
     }
 
    
-    public function availableProduct($id)
+    public function availableProductByCat($categoryId)
     {
-
         return $this->createQueryBuilder('p')
-        ->addSelect('c') //to make Doctrine actually use the join
+        ->addSelect('c') 
         ->leftJoin('p.category', 'c')
         ->where('c.id = :id')
         ->andWhere('p.status = 1')
-        ->setParameter('id', $id)
+        ->setParameter('id', $categoryId)
+        ->getQuery()
+        ->getResult();
+    }
+
+    public function availableProductByType($typeId)
+    {
+        return $this->createQueryBuilder('p')
+        ->addSelect('t') 
+        ->leftJoin('p.type', 't')
+        ->where('t.id = :id')
+        ->andWhere('p.status = 1')
+        ->setParameter('id', $typeId)
         ->getQuery()
         ->getResult();
     }
     
-
-    /*
-    public function findOneBySomeField($value): ?Product
+    public function availableProductByBrand($brandId)
     {
         return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        ->addSelect('b') 
+        ->leftJoin('p.brand', 'b')
+        ->where('b.id = :id')
+        ->andWhere('p.status = 1')
+        ->setParameter('id', $brandId)
+        ->getQuery()
+        ->getResult();
     }
-    */
+
+   
 }

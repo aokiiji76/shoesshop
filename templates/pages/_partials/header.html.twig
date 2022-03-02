@@ -36,9 +36,11 @@
       <!-- Navbar Collapse -->
       <div id="navbarCollapse" class="collapse navbar-collapse">
         <ul class="navbar-nav mx-auto">
+        <a style= 'text-decoration:none'  href=" {{path('accueil')}} ">
           <button class="nav-link btn btn-white" type="button">
             Accueil
-          </button>         
+          </button>  
+           </a>      
           <div class="dropdown">
             <button class="nav-link btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton1"
               data-bs-toggle="dropdown" aria-expanded="false">
@@ -57,7 +59,7 @@
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
             {% for type in globalTypes.findAll() %}
-              <li><a class="dropdown-item" href="#"> {{type.name}} </a></li>
+              <li><a class="dropdown-item" href=" {{path('catalogType',{typeId:type.id})}} "> {{type.name}} </a></li>
             {% endfor %}
             </ul>
           </div>
@@ -68,7 +70,7 @@
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
             {% for brand in globalBrands.findAll() %}
-              <li><a class="dropdown-item" href="#"> {{brand.name}} </a></li>
+              <li><a class="dropdown-item" href="{{path('catalogBrand',{brandId:brand.id})}}"> {{brand.name}} </a></li>
             {% endfor %}
             </ul>  
           </div>

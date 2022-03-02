@@ -2,45 +2,59 @@
 
 namespace App\Controller;
 
+use App\Repository\BrandRepository;
 use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
+use App\Repository\TypeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class CatalogController extends AbstractController
 {
+    //Produit par Categorie
     #[Route('/categorie/{categoryId}', name: 'catalogCategory')]
     public function productByCategory(
         CategoryRepository $categoryRepository,
         ProductRepository $productRepository, 
         $categoryId): Response
     {
-    
-        $category = $categoryRepository->find($categoryId); 
-        $products = $productRepository->availableProduct($categoryId);
-       
-    //dd($products);
+        $category=$categoryRepository->find($categoryId); 
+        $products=$productRepository->availableProductByCat($categoryId);
+        return $this->render('pages/product/list.html.twig',[
+            'category'=>$category,
+            'products'=>$products
+        ]);
+    }
+    //produit par type
+    #[Route('/type/{typeId}', name: 'catalogType')]
+    public function productByBrand(
+        TypeRepository $typeRepository,
+        ProductRepository $productRepository,
+        $typeId
+        ): Response
+    {
+        $type = $typeRepository->find($typeId);
+        $products = $productRepository->availableProductByType($typeId);
         return $this->render('pages/product/list.html.twig', [
-            'category' => $category,
-            'products'=> $products
-            
+            'type'=>$type,
+            'products'=>$products
         ]);
     }
-
-    #[Route('/catalog', name: 'catalog')]
-    public function productByBrand(): Response
+    //produit par marque
+    #[Route('/marque/{brandId}', name: 'catalogBrand')]
+    public function productByType(
+        BrandRepository $brandRepository,
+        ProductRepository $productRepository,
+        $brandId
+    ): Response
     {
-        return $this->render('catalog/index.html.twig', [
-            'controller_name' => 'CatalogController',
-        ]);
-    }
+        $brand=$brandRepository->find($brandId);
+        $products=$productRepository->availableProductByBrand($brandId);
 
-    #[Route('/catalog', name: 'catalog')]
-    public function productByType(): Response
-    {
-        return $this->render('catalog/index.html.twig', [
-            'controller_name' => 'CatalogController',
+        return $this->render('pages/product/list.html.twig', [
+            'brand'=>$brand,
+            'products'=>$products
         ]);
     }
 }

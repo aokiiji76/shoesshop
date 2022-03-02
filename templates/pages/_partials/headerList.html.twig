@@ -1,0 +1,38 @@
+{% set route = app.request.get('_route') %}
+{{ route }}
+<section class="hero">
+    <div class="container">
+        <!-- Breadcrumbs -->
+        <ol class="breadcrumb justify-content-center">
+            <li class="breadcrumb-item"><a href=" {{path('accueil')}} ">Accueil</a></li>
+            <li class="breadcrumb-item active">
+                {% if route == 'catalogCategory' %}
+                {{category.name}}
+                {% elseif route == 'catalogType'  %}
+                {{type.name}}
+                {% else %}
+                {{brand.name}}
+                {% endif %}
+            </li>
+        </ol>
+        <!-- Hero Content-->
+        <div class="hero-content pb-5 text-center">
+            <h1 class="hero-heading">
+            {% if route == 'catalogCategory' %}
+                {{category.name}}
+                {% elseif route == 'catalogType'  %}
+                {{type.name}}
+                {% else %}
+                {{brand.name}}
+                {% endif %}
+            </h1>
+            <div class="row">
+                <div class="col-xl-8 offset-xl-2">
+            {% if route == 'catalogCategory' %}
+                    <p class="lead text-muted">{{category.subtitle}}</p>
+            {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
