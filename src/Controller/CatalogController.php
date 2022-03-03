@@ -51,7 +51,6 @@ class CatalogController extends AbstractController
     {
         $brand=$brandRepository->find($brandId);
         $products=$productRepository->availableProductByBrand($brandId);
-
         return $this->render('pages/product/list.html.twig', [
             'brand'=>$brand,
             'products'=>$products

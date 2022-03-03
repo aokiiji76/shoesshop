@@ -15,7 +15,7 @@
           <div class="card-img-overlay d-flex align-items-center">
             <div class="w-100 py-3">
               <h2 class="display-3 font-weight-bold mb-4"> {{category.name}} </h2>
-              <a href="category.html" class="btn btn-light">{{category.subtitle}}</a>
+              <a href="{{path('catalogCategory',{categoryId:category.id} )}}" class="btn btn-light">{{category.subtitle}}</a>
             </div>
           </div>
         </div>
@@ -34,7 +34,7 @@
             <div class="card-img-overlay d-flex align-items-center">
               <div class="w-100">
                 <h2 class="display-4 mb-4">{{category.name}}</h2>
-                <a href="category.html" class="btn btn-light">{{category.subtitle}}</a>
+                <a href="{{path('catalogCategory',{categoryId:category.id} )}}" class="btn btn-light">{{category.subtitle}}</a>
               </div>
             </div>
           </div>

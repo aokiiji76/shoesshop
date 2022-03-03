@@ -50,7 +50,7 @@ class ProductCrudController extends AbstractCrudController
             ->setBasePath(self::PRODUCT_BASE_PATH)
             ->setUploadDir(self::PRODUCT_UPLOAD_DIR),
             TextField::new('name','Nom du produit'),//nom du produit
-            MoneyField::new('price','Prix')->setCurrency('EUR')->setNumDecimals(2),//prix du produit
+            MoneyField::new('price','Prix')->setCurrency('EUR')->setStoredAsCents(false),//prix du produit
             TextEditorField::new('description','Description'),//description du produit
     
             DateTimeField::new('updatedAt')->onlyOnIndex(),
