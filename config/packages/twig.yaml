@@ -5,6 +5,7 @@ twig:
         globalCategories: '@App\Repository\CategoryRepository'
         globalTypes: '@App\Repository\TypeRepository'
         
+        
 
 when@test:
     twig:
