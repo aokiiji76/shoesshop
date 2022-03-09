@@ -48,9 +48,9 @@
               <div class="cart-item">
                 <div class="row d-flex align-items-center text-center">
                   <div class="col-5">
-                    <div class="d-flex align-items-center"><a href="detail.html"><img
+                    <div class="d-flex align-items-center"><a href="{{path('productDetail',{productId:item.product.id})}}"><img
                           src="  {{asset('build/images/products/' ~ item.product.picture)}} " alt="..." class="cart-item-img"></a>
-                      <div class="cart-title text-left"><a href="detail.html"
+                      <div class="cart-title text-left"><a href="{{path('productDetail',{productId:item.product.id})}}"
                           class="text-uppercase text-dark"><strong>{{item.product.name}}</strong></a><br><span
                           class="text-muted text-sm">Categorie : {{item.product.category}} </span><br>
                         <span class="text-muted text-sm">Type : {{item.product.type}}  </span>
