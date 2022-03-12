@@ -47,7 +47,7 @@
               Catégories
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            {% for category in globalCategories.homeOrderCategory() %}
+            {% for category in globalCategories.findAll() %}
               <li><a class="dropdown-item" href=" {{path('catalogCategory',{categoryId:category.id} )}} "> {{category.name}} </a></li>
             {% endfor %}
             </ul>

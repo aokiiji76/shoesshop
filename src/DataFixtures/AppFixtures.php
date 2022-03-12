@@ -30,7 +30,7 @@ class AppFixtures extends Fixture
         $products=[];
         
         // faker de category
-       for ($i = 1; $i <= 5; $i++) {
+       for ($i = 1; $i <= 5 ; $i++) {
             $category = new Category();
             $name = $faker->unique()->categoryName();
             $category->setName($name);
@@ -54,7 +54,7 @@ class AppFixtures extends Fixture
            
         }
         //faker de type
-        for ($i = 1; $i <= 9; $i++) {
+        for ($i = 1; $i <= 9 ; $i++) {
             $type = new Type();
             $name = $faker->unique()->typeName();
             $type->setName($name);
@@ -65,12 +65,12 @@ class AppFixtures extends Fixture
            
         }
         //product 
-        for ($i = 1; $i <= 40; $i++) {
+        for ($i = 1; $i <= 50; $i++) {
             $product = new Product();
             $product->setName($faker->word(5));
             $product->setDescription($faker->paragraph());
-            $product->setPicture('/images/products/jordan_air.jpg');
-            //$product->setPicture('../../public/images/products/jordan_air.jpg'); 
+            //$product->setPicture('public/build/images/products/jordan_air.6a80dfde.jpg');
+            $product->setPicture('jordan_air.jpg'); 
             $product->setPrice($faker->numberBetween(40, 150)); 
             $product->setRate($faker->numberBetween(0, 6));
             $product->setStatus('1');
@@ -86,7 +86,7 @@ class AppFixtures extends Fixture
         foreach ($products as $product) {
             for ($i = 0; $i < rand(1,1); $i++) { 
                 //une category au hasard :
-                $category = $categories[rand(1, count($categories)-1)];
+                $category = $categories[rand(0, count($categories)-1)];
                 $product->setCategory($category);
             }
         }
@@ -95,7 +95,7 @@ class AppFixtures extends Fixture
          foreach ($products as $product) {
             for ($i = 0; $i < rand(1,1); $i++) { 
                 //une category au hasard :
-                $brand = $brands[rand(1, count($brands)-1)];
+                $brand = $brands[rand(0, count($brands)-1)];
                 $product->setBrand($brand);
             }
         }
@@ -104,7 +104,7 @@ class AppFixtures extends Fixture
          foreach ($products as $product) {
             for ($i = 0; $i < rand(1,1); $i++) { 
                 //une category au hasard :
-                $type = $types[rand(1, count($types)-1)];
+                $type = $types[rand(0, count($types)-1)];
                 $product->setType($type);
             }
         }
