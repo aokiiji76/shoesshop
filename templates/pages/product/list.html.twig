@@ -29,7 +29,7 @@
       <!-- product-->
       <div class="product col-xl-3 col-lg-4 col-sm-6">
         <div class="product-image">
-          <a href="detail.html" class="product-hover-overlay-link">
+          <a href="{{path('productDetail',{productId:product.id})}}" class="product-hover-overlay-link">
             <img src=" {{asset('build/images/products/' ~ product.picture)}}" alt="product" class="img-fluid">
           </a>
         </div>
@@ -40,7 +40,7 @@
         </div>
         <div class="py-2">
           <p class="text-muted text-sm mb-1"> {{product.type}} </p>
-          <h3 class="h6 text-uppercase mb-1"><a href="detail.html" class="text-dark">{{product.name}}</a></h3><span
+          <h3 class="h6 text-uppercase mb-1"><a href="{{path('productDetail',{productId:product.id})}}" class="text-dark">{{product.name}}</a></h3><span
             class="text-muted">{{product.price}}€</span>
         </div>
       </div>

@@ -9,7 +9,7 @@
   <div class="container">
     <!-- Breadcrumbs -->
     <ol class="breadcrumb justify-content-center">
-      <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+      <li class="breadcrumb-item"><a href=" {{path('accueil')}} ">Accueil</a></li>
       <li class="breadcrumb-item active">Panier</li>
     </ol>
 
@@ -58,13 +58,7 @@
                     </div>
                   </div>
                   <div class="col-2"> {{item.product.price}} </div>
-                  <div class="col-2">
-                    <div class="d-flex align-items-center">
-                      <div class="btn btn-items btn-items-decrease">-</div>
-                      <input value=" {{item.quantity}} " class="form-control text-center input-items" type="text">
-                      <div class="btn btn-items btn-items-increase">+</div>
-                    </div>
-                  </div>
+                  <div class="col-2"> {{item.quantity}}</div>
                   <div class="col-2 text-center"> {{item.product.price * item.quantity}} </div>
                   <div class="col-1 text-center"><a href=" {{path('cart_remove',{'id':item.product.id})}} " class="cart-remove btn btn-danger btn-sm "> <i class="fas fa-trash"></i></a></div>
                 </div>
